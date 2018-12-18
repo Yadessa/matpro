@@ -1,0 +1,181 @@
+<% include partial.ejs %>      
+   
+
+<div id = "container">
+</div>
+ <div class = "Data1">
+
+		
+	
+	<form action="/addata" method="Post">
+
+		
+ 		<input id = "station" type="text" name="stationF" placeholder = "From station" required pattern=".{2,6}" required title="Please the length should be two digits minimum or six digits maximum">
+ 		<input class="stationT" id = "station" type="text" name="stationT" placeholder = "To station" required pattern=".{2,6}" required title="Please the length should be two digits minimum or six digits maximum"> 
+		 
+		<label for = "filltype">Fill type:</label>
+ 		<select id = "filltype" name="filltype" required>
+			<option value = "Rock fill">Rock fill</option> 
+			<option value = "G3">G3</option>
+ 			<option Value = "G7">G7</option>
+ 			<option Value = "G15">G15</option>
+ 			<option Value = "Sub base">Sub base</option>
+ 			<option Value = "Base course">Base course</option>
+ 		</select>
+ 		<label for = "layerno:">Layer no.:</label>
+ 		<select id = "layerno" name = "layerno">
+ 			<option value = "1">First</option>
+ 			<option value = "2">Second</option>
+ 			<option value = "3">Third</option>
+ 			<option value = "4">Fourth</option>
+ 			<option value = "5">Fifth</option>
+ 		</select>
+
+ 		<label for = "thickness">Thickness:</label>
+ 		<input class="thickness" id = "thickness" type="text" name = "thickness" placeholder = "thickness" required pattern=".{2,3}" required title="Please the thickness should be two digits minimum or three digits maximum">
+ 		<label for = "compaction">Compaction:</label>
+		<input class="compaction" id = "compaction" type="text" name="compaction" placeholder = "compaction" required pattern=".{2,3}" required title="Please the compaction percentage should not exceed 100%">
+		
+
+		
+		 <label for = "road width">Road width:</label>
+		 <input class = "road width" type="number" name="Rwidth" placeholder = "Road width" required pattern=".{2}" required title="Please insert correct road width!!">
+		 
+		 		
+		 <label for = "picture">Picture:</label>
+ 		 <input id = "picture" type="file" name="picture" >
+		 <label for = "borrow pit name">Borrow pit:</label>
+		 <input class="borrowPit" id = "borrow pit name" type="text" name="BPname" placeholder = "borrow pit" required title="Borrow pit name goes here!!!">
+		 <label for = "shrinkage">Shrinkage:</label>
+		 <input class="shrinkage" id = "shrinkage" type="decimal" name="shrnk" placeholder = " factor"  required type = "number" required title="Please insert shrinkage factor!!!">
+
+		 
+		 <label for = "approval">Signature:</label>
+ 		<select id = "approval" name = "approval">
+ 			<option value ="Approved" >Approved</option>
+ 			<option value = "Not Approved">Not Approved</option>
+ 
+ 		</select>
+
+ 		<label for = "supervisor">Supervisor:</label>
+		 <input class="super" id = "supervisor" type="text" name="supervisor" placeholder = "supervisor" required title="Please insert Supervisor name">
+		 <section id="commentSec">
+		 <textarea class="comment" id = "comment" cols = "35" rows = "1" name="comment" placeholder = "Insert your comment!!" ></textarea> 		 
+		</section>
+		 <button  id = "project" type = "submit" class = "insert">submit</button>
+		
+	 </form>
+ </div>
+	<div class = "database1">
+	<form action="/findata" method="Post">
+		
+		<input name = "stationF" type = "text" class="stationF" id = "station" placeholder ="Insert station">
+					
+		<button type = "submit">Retrieve</button>
+	</form>
+	</div>
+	<div class = "database2">
+    <form action="/findfilltype" method="Post">
+		<select class="filltype" id = "filltype" name = "filltype" style="margin-left: 0px;" placeholder = "filltype">
+			<option value="">Fill type</option>
+			<option value = "Rock fill">Rock fill</option>
+ 			<option value = "G3">G3</option>
+ 			<option value = "G7">G7</option>
+ 			<option value = "G15">G15</option>
+ 			<option value = "sub base">Sub base</option>
+			<option value = "base course">Base course</option>
+		 </select>			
+		<button class = "del" type = "submit" >Status</button>
+	</form>
+	</div>
+	<div class = "database3">
+	
+	<form action="/deletedata" method="Post">
+		<input name = "stationF" type = "text" id = "station" placeholder ="Insert station">
+					
+		<button class = "del" type = "submit" >Remove</button>
+	</form>
+	
+	
+	</div>
+	 <div class = "database4">
+   <form action = "/comment" method = "get">
+   <button type = "submit" style="margin-left: 10px;">X-section</button>
+	</form>
+	</div>
+   
+	
+	
+	<div class = "database5">
+   <form action = "/Mapfilltype" method = "post">
+	<select name="filltype" id="">
+		<option value="">Select fill type</option>
+		<option value="Rockfill">Rock fill</option>
+		<option value="G3">G-3</option>
+		<option value="G7">G-7</option>
+		<option value="G15">G-15</option>
+		<option value="subbase">Sub base</option>
+		<option value="basecourse">Base course</option>
+		
+
+		
+		
+	</select>
+   <button class="" type = "submit">Map</button>
+	</form>
+	</div>
+
+	<div class = "database7">
+		<form action = "/Rprofile" method = "get">
+		<button type = "submit" class="profile">Profile</button>
+		 </form>
+		 </div>
+		 
+
+	
+<div class = "database">
+	
+	
+
+ <ol>
+	<!-- <p><%=datas.Prname%></p><br> -->
+<% datas.forEach(function(data){ %>
+<hr>
+<li> <strong><U>S T A T I O N</U><br> From:</strong><%=data.stationF%>--<strong>To:</strong><%=data.stationT%>------Filltype:--<%=data.filltype%>------Layerno:--<%=data.layerno%>------Thickness:--<%=data.thickness%>------Compaction:--<%=data.compaction%>------<%=data.approval%>------By:--<%=data.supervisor%>------Date:--<%=data.Date%></li>
+<% }) %>
+</ol>
+</div>
+
+<script>
+	
+	var logtag = document.querySelector("#log")
+	var regtag = document.querySelector("#reg")
+	var homtag = document.querySelector("#hom")
+	var dattag = document.querySelector("#dat")
+	var instag = document.querySelector("#ins")
+	var abttag = document.querySelector("#abt")
+	var loogtag = document.querySelector("#loog")
+	var projj = document.querySelector("#proj")
+	
+	
+	projj.classList.add("selected");
+	
+	logtag.classList.remove("selected");
+	regtag.classList.remove("selected");
+	homtag.classList.remove("selected");
+	dattag.classList.add("selected");
+	instag.classList.remove("selected");
+	abttag.classList.remove("selected");
+	loogtag.classList.remove("selected");
+
+	
+	
+           
+
+   
+</script>
+
+
+</body>
+
+</html>
