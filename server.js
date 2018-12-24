@@ -22,7 +22,8 @@ var flash = require('connect-flash');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
-var connection = 'mongodb://localhost/Data_app' || 'mongodb+srv://yadessadinsa2019@gmail.com:<Matbase88017*>@cluster0-q6n7u.mongodb.net/test?retryWrites=truemongoose.connect(connection, function(err)'{
+var connection = 'mongodb://localhost/Data_app' || 'mongodb+srv://yadessadinsa2019@gmail.com:<Matbase88017*>@cluster0-q6n7u.mongodb.net/test?retryWrites=true'
+mongoose.connect(connection, function(err){
         if(err){
               console.log('Error, connection failed to',connection);
            }
