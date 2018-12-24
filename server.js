@@ -22,8 +22,7 @@ var flash = require('connect-flash');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
-var connection = 'mongodb://localhost/Data_app' || 'mongodb+srv://yadessadinsa2019@gmail.com:'+ process.env.MONGO_ATLAS_PW +'@cluster0-shard-00-00-q6n7u.mongodb.net:27017,cluster0-shard-00-01-q6n7u.mongodb.net:27017,cluster0-shard-00-02-q6n7u.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true';
-mongoose.connect(connection, function(err){
+var connection = 'mongodb://localhost/Data_app' || 'mongodb+srv://yadessadinsa2019@gmail.com:<Matbase88017*>@cluster0-q6n7u.mongodb.net/test?retryWrites=truemongoose.connect(connection, function(err)'{
         if(err){
               console.log('Error, connection failed to',connection);
            }
