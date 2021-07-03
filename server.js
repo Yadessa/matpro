@@ -22,7 +22,7 @@ var flash = require('connect-flash');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
-var connection = 'mongodb://localhost/Data_app' || 'mongodb+srv://yadessadinsa2019T@gmail.com:<matbase88017*>@cluster0-q6n7u.mongodb.net/test?retryWrites=true'
+var connection = 'mongodb://localhost/Data_app' || 'Process.env.MONGODB_URI'
 mongoose.connect(connection, function(err){
         if(err){
               console.log('Error, connection failed to',connection);
