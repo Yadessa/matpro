@@ -21,8 +21,8 @@ var upload = multer({ dest: './uploads' })
 var flash = require('connect-flash');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
-
-var connection = 'mongodb://localhost/Data_app' || 'Process.env.MONGODB_URI'
+var mongodb_URI = 'mongodb+srv://Yadessa:<88017>@cluster0.nb5sg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+var connection = 'mongodb://localhost/Data_app' || 'mongodb_URI'
 mongoose.connect(connection, function(err){
         if(err){
               console.log('Error, connection failed to',connection);
