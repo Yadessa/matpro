@@ -23,38 +23,16 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 //var MONGODB_URI = mongodb+srv://Yadessa:117022@cluster0.nb5sg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 
-const { MongoClient } = require('mongodb');
-const uri = 'mongodb://localhost/Data_app' || "mongodb+srv://Yadessa:<117022>@cluster0.nb5sg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
+var connection = process.env.MONGODB_URI || 'mongodb://localhost/Data_app'
+mongoose.connect(connection, function(err){
+       if(err){
+             console.log('Error, connection failed to',connection);
+           }
+    else{
+              console.log('Connection is made to', connection );
+        }
+    });
 
-//var connection = process.env.MONGODB_URI || 'mongodb://localhost/Data_app'
-//mongoose.connect(connection, function(err){
-  //      if(err){
-    //          console.log('Error, connection failed to',connection);
-  //         }
-    //else{
-      //        console.log('Success: connection made to', connection );
-        //}
-    //});
-
-//     const MongoClient = require('mongodb').MongoClient;
-
-// // replace the uri string with your connection string.
-// const uri = "mongodb+srv://shahid:<PASSWORD>@cluster0-1q7ty.mongodb.net/test"
-// MongoClient.connect(uri, function(err, client) {
-//    if(err) {
-//         console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
-//    }
-//    console.log('Connected...');
-//    const collection = client.db("test").collection("devices");
-//    // perform actions on the collection object
-//    client.close();
-// });
 
 const PORT = process.env.Port || 8080
 /* VIEW ENGINE SETUP
@@ -116,5 +94,5 @@ app.listen(PORT, function (err) {
         console.log("The server is not lisenining, Error!!!");
         console.log(err);
     } else
-        console.log("The server is runnining successfuly!!")
+        console.log("The server is runnining successfuly to Port 8080 !!")
 })
