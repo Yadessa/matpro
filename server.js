@@ -21,16 +21,26 @@ var upload = multer({ dest: './uploads' })
 var flash = require('connect-flash');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
-var MONGODB_URI = mongodb+srv://Yadessa:117022@cluster0.nb5sg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
-var connection = process.env.MONGODB_URI || 'mongodb://localhost/Data_app'
-mongoose.connect(connection, function(err){
-        if(err){
-              console.log('Error, connection failed to',connection);
-           }
-    else{
-              console.log('Success: connection made to', connection );
-        }
-    });
+//var MONGODB_URI = mongodb+srv://Yadessa:117022@cluster0.nb5sg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+
+const { MongoClient } = require('mongodb');
+const uri = 'mongodb://localhost/Data_app' || "mongodb+srv://Yadessa:<117022>@cluster0.nb5sg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
+
+//var connection = process.env.MONGODB_URI || 'mongodb://localhost/Data_app'
+//mongoose.connect(connection, function(err){
+  //      if(err){
+    //          console.log('Error, connection failed to',connection);
+  //         }
+    //else{
+      //        console.log('Success: connection made to', connection );
+        //}
+    //});
 
 //     const MongoClient = require('mongodb').MongoClient;
 
@@ -46,7 +56,7 @@ mongoose.connect(connection, function(err){
 //    client.close();
 // });
 
-const PORT = process.env.PORT || 8080
+const PORT = process.env.Port || 8080
 /* VIEW ENGINE SETUP
 -------------------------------------*/
 app.set('views',path.join(__dirname, 'views'));
