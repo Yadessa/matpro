@@ -78,14 +78,14 @@ router.get('/login', function (req, res) {
     res.render('login.ejs')
 }) 
 
-//function ensureAuthenticated(req, res, next) {
-  //  if (req.isAuthenticated()) {
-    //    return next();
-    //} else {
-      //  res.redirect('/login');
+function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    } else {
+        res.redirect('/login');
 
-    //}
-//}
+    }
+}
 
 router.post('/login', passport.authenticate('local', {failureRedirect: '/login' ,failureFlash:'Invalid username pssword or project name'}),
         function(req,res){
