@@ -21,7 +21,7 @@ var upload = multer({ dest: './uploads' })
 var flash = require('connect-flash');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
-//var MONGODB_URI = mongodb+srv://Yadessa:117022@cluster0.nb5sg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+var MONGODB_URI = mongodb+srv://Yadessa:117022@cluster0.nb5sg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 
 var connection = process.env.MONGODB_URI || 'mongodb://localhost/Data_app'
 mongoose.connect(connection, function(err){
