@@ -34,7 +34,7 @@ mongoose.connect(connection, function(err){
     });
 
 
-const PORT = process.env.Port || 8080
+const PORT = process.env.PORT || 8080
 /* VIEW ENGINE SETUP
 -------------------------------------*/
 app.set('views',path.join(__dirname, 'views'));
